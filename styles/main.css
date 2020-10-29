@@ -1,0 +1,28 @@
+main {
+    padding: 20px 0;
+  }
+  
+  section {
+    margin-bottom: 100px;
+  }
+  
+  h1 {
+    margin: 0 0 30px 10px;
+    color: ;
+  }
+  
+  h2 {
+    margin: 0 10px;
+  
+  }
+  
+  h3 {
+    margin: 12px 0;
+
+  }
+
+  div {
+      display: flex;
+      flex-direction: row;
+      padding: 20px;
+  }

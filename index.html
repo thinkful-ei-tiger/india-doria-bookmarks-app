@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <title>Bookmark App</title>
+</head>
+<body>
+    <section>
+    
+    <h1>My Bookmarks</h1>
+    <div>
+        <button>New</button>
+        <select name="rating" id="rating">
+            <option value="">Filter By</option>
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
+        </select>
+    </div>
+
+<div class="bookmarks">
+    <h3>Title 11</h3> 
+    <p>Rating</p>
+</div>
+    </section>
+
+
+    <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+    <script type="module" src="scripts/index.js"></script>
+    <script type="module" src="scripts/add-bookmark.js"></script>
+    <script type="module" src="scripts/form-error.js"></script>
+    <script type="module" src="scripts/expanded.js"></script>
+</body>
+</html>
