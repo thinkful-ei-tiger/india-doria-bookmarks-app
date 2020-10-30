@@ -8,7 +8,7 @@ const store = {
         description: 'lorem ipsum dolor',
         expanded: true
       }
-      ...
+     
     ],
     adding: false,
     error: null,

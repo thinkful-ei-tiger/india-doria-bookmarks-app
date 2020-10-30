@@ -16,11 +16,18 @@ const store = {
         description: 'dolorum tempore deserunt',
         expanded: false
       } 
-      ...
+      
     ],
     adding: false,
     error: null,
     filter: 0
   };
 
+
+const dummyFunction = function () {
   
+  
+}
+
+// when the page loads, call `addBookmark`
+$(dummyFunction);

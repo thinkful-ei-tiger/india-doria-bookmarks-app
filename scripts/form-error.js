@@ -1,5 +1,5 @@
 const store = {
-    bookmarks: [...],
+    bookmarks: [],
       adding: true,
       error: true,
       filter: 0
