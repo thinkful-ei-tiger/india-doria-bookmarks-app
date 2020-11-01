@@ -1,9 +1,17 @@
 const store = {
-    bookmarks: [ ],
-    adding: true,
+    bookmarks: [ {
+      id: 'x56w',
+      title: 'Title 1',
+      rating: 3,
+      url: 'http://www.title1.com',
+      description: 'lorem ipsum dolor sit',       expanded: false
+    }],
+   adding: true,
     error: null,
     filter: 0
   };
+
+
 
 function render() {
   //Sets the entire page to the add-bookmark user flow.
@@ -26,26 +34,36 @@ function render() {
   )
 }
 
-function renderSaved() {
-    for (let i=0; i<=store.bookmarks.length; i++) {
-      $('.js-bookmark-list').html(
-        `<li>${store.bookmarks[i].title}</li>`
-        )
-        console.log("damn girl")
-    }
-    
-}
+
 
 function saveBookmark() {
-  let bookmarkObject = {
-    id: 0,
-      title: `${title.value}`,
-      rating: `${rating.value}`,
-      url: `${url.value}`,
-      description: `${description.value}`,
-      expanded: false
-  }
-  store.bookmarks.push(bookmarkObject)
+const bookmarkData = JSON.stringify({
+    title: `${title.value}`,
+    //rating: `${rating.value}`,
+    url: `${url.value}`,
+    description: `${description.value}`  
+  });
+  
+  fetch('https://thinkful-list-api.herokuapp.com/india/bookmarks', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: bookmarkData
+  })
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.error(err.message))
+  //REQ BODY: {"title": `${title.value}`, "url": `${url.value}`, "desc": `${description.value}`, "rating": `${rating.value}` }
+  //`<li>${title.value}, ${url.value}, ${description.value}, ${rating.value} </li>`
+  //{
+  //  id: 0,
+    //  title: `${title.value}`,
+      //rating: `${rating.value}`,
+      //url: `${url.value}`,
+      //description: `${description.value}`,
+      //expanded: false
+ // }`
+  
+  //store.bookmarks.push(bookmarkObject)
 }
 
 const handleAddBookmark = function () {
