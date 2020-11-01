@@ -1,7 +1,8 @@
-import $ from 'jquery'
-import api from './api.js'
-import store from './store.js'
-import bookmarks from './bookmarks.js'
+import $ from './node_modules/jquery/src/jquery.js'
+//import './src/styles/main.css'
+import api from './src/api.js'
+import store from './src/store.js'
+import bookmarks from './src/bookmarks.js'
 
 
 function main() {

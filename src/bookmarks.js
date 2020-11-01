@@ -231,11 +231,12 @@ function handleDeleteItem() {
 
 
 function handleCancelError() {
-  $('.container').on('click', '#cancel-err', function () {
+  $('.container').on('click', '#cancel-err', function() {
     store.setError(null)
     render()
   })
 }
+
  function handleCancelClick() {
   $('.container').on('click', '#cancel', function (evt) {
     let id = $(this).closest('.js-form').data('item-id')
@@ -280,7 +281,7 @@ function handleListItemClick () {
 }
 
 function handleEditClick () {
-  $('.container').on('click', '.js-edit', function (evt) {
+  $('.container').on('click', '.js-edit', function(evt) {
     let id = $(this).closest('.js-list-item').data('item-id');
     store.changeEdit(id)
     render()

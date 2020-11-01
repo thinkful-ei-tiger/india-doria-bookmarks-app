@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import jquery from '../node_modules/jquery/dist/jquery.js'
 import bookmark from './bookmarks.js'
 const store = {
   bookmarks: [],
