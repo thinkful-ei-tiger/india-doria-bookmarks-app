@@ -1,5 +1,5 @@
 import $ from 'jquery'
-//import './src/styles/main.css'
+import './src/styles/main.css'
 import api from './src/api.js'
 import store from './src/store.js'
 import bookmarks from './src/bookmarks.js'
