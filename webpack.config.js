@@ -1,15 +1,15 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './index.js',
+  entry: './src/index.js',
   output: {
     path: __dirname + '/docs',
-    filename: './docs/index_bundle.js'
+    filename: 'index_bundle.js'
   },
   mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({
-      template: './docs/index.html'
+      template: './src/index.html'
     })
   ],
   module: {
