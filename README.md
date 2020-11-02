@@ -1,12 +1,12 @@
-<h1><a href="https://thinkful-ei-tiger.github.io/india-doria-bookmarks-app/">Live Webpage  </a></h1>
+# [Live Webpage](https://thinkful-ei-tiger.github.io/india-doria-bookmarks-app/)
 
-<p>
+
  I can add bookmarks to my bookmark list. Bookmarks contain:
 
-title
-url link
-description
-rating (1-5)
+*title
+*url link
+*description
+*rating (1-5)
 I can see a list of my bookmarks when I first open the app
 
 All bookmarks in the list default to a "condensed" view showing only title and rating
@@ -21,4 +21,4 @@ Check all validations in the API documentation (e.g. title and url field require
 I can select from a dropdown (a <select> element) a "minimum rating" to filter the list by all bookmarks rated at or above the chosen selection
 
 (Extension feature - optional) I can edit the rating and description of a bookmark in my list
-</p>
+
