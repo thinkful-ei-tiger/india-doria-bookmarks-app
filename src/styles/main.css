@@ -4,7 +4,7 @@ main {
   }
   
   body {
-    background-image: url("http://3ug0rc392q8g35229v3vvbxp.wpengine.netdna-cdn.com/wp-content/uploads/2016/02/Header-Background-Image-1024x128.png")
+    background-image: url('http://3ug0rc392q8g35229v3vvbxp.wpengine.netdna-cdn.com/wp-content/uploads/2016/02/Header-Background-Image-1024x128.png');
   }
 
   section {

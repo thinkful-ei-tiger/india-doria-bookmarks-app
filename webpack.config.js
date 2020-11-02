@@ -4,12 +4,12 @@ module.exports = {
   entry: './index.js',
   output: {
     path: __dirname + '/docs',
-    filename: 'index_bundle.js'
+    filename: './docs/index_bundle.js'
   },
   mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html'
+      template: './docs/index.html'
     })
   ],
   module: {
