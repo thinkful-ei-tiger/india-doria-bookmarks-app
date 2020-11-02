@@ -72,10 +72,10 @@ function getStars(rating) {
   let stars = 0
   let offStar = 5 - rating
   for (let i = 0; i < rating; i++) {
-    start += 1
+    stars += 1
   }
   for (let i = 0; i < offStar; i++) {
-    start -= 1
+    stars -= 1
   }
 
   return stars;
@@ -87,7 +87,7 @@ function generateListItem(items) {
   items.forEach((site) => {
     let stars = '';
     if (site.rating) {
-      stars = getStarts(site.rating);
+      stars = getStars(site.rating);
     }
 
     listString += ` <li class='js-list-item list-item flex-column' tabindex="0" data-item-id="${
@@ -95,11 +95,9 @@ function generateListItem(items) {
     }">
                     <div class="list-head flex-row">
                         <span class="item-title"> ${site.title}</span> 
-                        <span class="stars icon ${
-                          !site.expanded ? '' : 'hidden'
-                        }"> ${starts} </span>
+                        
                       <span class="trash ${site.expanded ? '' : 'hidden'}">
-                        <button type="button" name="delete-item" class='js-delete delete-button'><img src="${deleteIcon}" alt="delete"> </button>
+                        <button type="button" name="delete-item" class='js-delete delete-button'>Delete</button>
                     </span>
                     </div>
                     <div class="js-expand item-preview flex-column  ${
@@ -111,11 +109,11 @@ function generateListItem(items) {
                             }" alt="link-to bookmark" target= "black">Visit page</a></button>
                             <span class= "star flex-column" > ${
                               site.rating
-                            } </span>
+                            } Stars </span>
                         </span>
                         <p class="description">${site.desc}
                         </p>
-                         <input type="button" class="js-edit buttons edit" value="Edit">
+                         <input type="button" class="js-edit buttons edit" id="edit-button" value="Edit">
                     </div>
                     </li> `
   })
@@ -127,7 +125,7 @@ function generateListItem(items) {
 function generateListTemplate(items) {
   let template = `<div class="js-error-container error-container flex-row "> </div>
   <div class="buttons-container flex-row">
-        <button type="button" class="js-new buttons" id='new-bookmark'> + New bookmark</button>
+        <button type="button" class="js-new buttons" id='new-bookmark'> + Add a bookmark:</button>
         <select name="filter" id="filter" class='buttons'>
             <option value="" selected disabled >Filter By</option>
             <option value="0">No filter</option>
@@ -188,11 +186,11 @@ function handleNewBookmark (bookmark) {
     .then((item) => {
       console.log(item)
       store.addBookmark(item)
-      store.toggleAdding()
+      store.toggleAdd()
       render()
     })
     .catch((error) => {
-      store.setError(error.message)
+      store.displayError(error.message)
       renderError()
     })
 }
@@ -201,12 +199,12 @@ function handleUpdateBookmark(id, bookmark) {
   api.updateBookmark(id, bookmark)
     .then(() => {
       store.updateBookmark(id, bookmark)
-      store.changeEdit('')
+      store.changeBookmark('')
       render()
     })
     .catch((error) => {
       console.log(error)
-      store.setError(error.message)
+      store.displayError(error.message)
       renderError()
     })
 }
@@ -222,7 +220,7 @@ function handleDeleteItem() {
         render()
       })
       .catch((error) => {
-        store.setError(error.message)
+        store.displayError(error.message)
         renderError()
       })
   })
@@ -232,7 +230,7 @@ function handleDeleteItem() {
 
 function handleCancelError() {
   $('.container').on('click', '#cancel-err', function() {
-    store.setError(null)
+    store.displayError(null)
     render()
   })
 }
@@ -240,8 +238,8 @@ function handleCancelError() {
  function handleCancelClick() {
   $('.container').on('click', '#cancel', function (evt) {
     let id = $(this).closest('.js-form').data('item-id')
-    if (id) store.changeEdit('')
-    else store.toggleAdding()
+    if (id) store.changeBookmark('')
+    else store.toggleAdd()
     render()
   })
 }
@@ -250,7 +248,7 @@ function handleFilterClick() {
   $('.container').on('change', '#filter', function (evt) {
     let filter = $(this).val()
     if (filter !== 0) {
-      store.changeFilter(filter)
+      store.filterBookmarks(filter)
       render()
     }
   })
@@ -258,7 +256,7 @@ function handleFilterClick() {
 
 function handleClickNew() {
   $('.container').on('click', '.js-new', function (evt) {
-    store.toggleAdding()
+    store.toggleAdd()
     render()
   })
 }
@@ -275,7 +273,7 @@ function handleListItemClick () {
   $('.container').on('click', '.js-list-item', function (evt) {
     evt.stopPropagation()
     const id = $(this).data('item-id')
-    store.toggleExpanded(id)
+    store.toggleExpandedView(id)
     render()
   })
 }
@@ -283,7 +281,7 @@ function handleListItemClick () {
 function handleEditClick () {
   $('.container').on('click', '.js-edit', function(evt) {
     let id = $(this).closest('.js-list-item').data('item-id');
-    store.changeEdit(id)
+    store.changeBookmark(id)
     render()
   })
 }
