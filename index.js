@@ -1,4 +1,4 @@
-import $ from './node_modules/jquery/src/jquery.js'
+import $ from 'jquery'
 //import './src/styles/main.css'
 import api from './src/api.js'
 import store from './src/store.js'
@@ -13,7 +13,7 @@ function main() {
     })
   })
   bookmarks.eventsListener()
-  booksmarks.render()
+  bookmarks.render()
 }
 
 $(main)
