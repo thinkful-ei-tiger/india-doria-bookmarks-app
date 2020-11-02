@@ -12,7 +12,7 @@
 *All bookmarks in the list default to a "condensed" view showing only title and rating
 *I can click on a bookmark to display the "detailed" view
 
-D*etailed view expands to additionally display description and a "Visit Site" link
+*Detailed view expands to additionally display description and a "Visit Site" link
 *I can remove bookmarks from my bookmark list
 *I receive appropriate feedback when I cannot submit a bookmark
 *I can select from a dropdown a "minimum rating" to filter the list by all bookmarks rated at or above the chosen selection
