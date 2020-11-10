@@ -92,21 +92,23 @@ function generateListItem(items) {
                     <div class="list-head flex-row">
                         <span class="item-title"> ${site.title}</span> 
                         
-                      <span class="trash ${site.expanded ? '' : 'hidden'}">
+                        <span class="trash" ${site.expanded ? '' : 'hidden'}>
                         <button type="button" name="delete-item" class='js-delete delete-button'>Delete</button>
                     </span>
                     </div>
-                    <div class="js-expand item-preview flex-column  ${!site.expanded ? '' : 'hidden'
+                    <div class="js-expand item-preview flex-column  ${site.expanded ? '' : 'hidden'
       }">
                         <span class="flex-row top-description">
-                            <button class="buttons visit-button"><a href="${site.url
+                            <button class="buttons visit-button" ${site.expanded ? '' : 'hidden'
+                          }><a href="${site.url
       }" alt="link-to bookmark" target= "black">Visit page</a></button>
                             <span class= "star flex-column" > ${site.rating
       } Stars </span>
                         </span>
-                        <p class="description">${site.desc}
+                        <p class="description" ${site.expanded ? '' : 'hidden'
+                      }>${site.desc}
                         </p>
-                         <input type="button" class="js-edit buttons edit" id="edit-button" value="Edit">
+                         <input type="button" class="js-edit buttons edit" id="edit-button" value="Edit" ${site.expanded ? '' : 'hidden'}> 
                     </div>
                     </li> `
   })

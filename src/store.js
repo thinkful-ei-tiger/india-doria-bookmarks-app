@@ -6,7 +6,7 @@ const store = {
   error: null,
   filter: 0,
   edit: ''
-};
+}
 
 function findById(id) {
   return store.bookmarks.find((site) => site.id === id)

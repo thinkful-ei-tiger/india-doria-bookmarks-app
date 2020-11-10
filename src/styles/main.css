@@ -12,8 +12,9 @@ main {
   }
 
   header {
-    background-color: royalblue;
-    opacity: 80%;
+    text-align: center;
+    font-size: larger;
+    margin-bottom: 20px;
   }
 
 
@@ -39,24 +40,27 @@ main {
       flex-direction: column;
       padding: 20px;
       margin-bottom: 100px;
-      
   }
 
-  button {
+  button, .js-edit {
     background-color: royalblue;
+    border-radius: 15px;
+    color: white;
   }
 
   select {
     background-color: royalblue;
+    border-radius: 15px;
+    color: white;
   }
 
   a:link {
-    color: darkorange
+    color: white
   }
   
  
   a:visited {
-    color: greenyellow;
+    color: darkorange;
   }
   
   
@@ -69,6 +73,23 @@ main {
     color: blue;
   }
 
+  .js-list-item {
+    border-style: double;
+    border-width: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+  }
+
+  .buttons-container {
+    text-align: right;
+    font-size: large;
+    border-radius: 20px;
+    
+  }
+
+  
   @media all and (min-width: 800px) {
 
     section, h1 {
