@@ -17,6 +17,3 @@ function main() {
 }
 
 $(main)
-export default {
-  main
-}

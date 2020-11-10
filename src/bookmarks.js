@@ -42,21 +42,18 @@ function generateAddForm(item) {
   let html = ` <h2>${item ? 'Edit bookmark' : 'Add new bookmark'}</h2>
   <div class="js-error-container error-container flex-column "> </div>
   <form class="js-form flex-column" data-item-id="${item ? item.id : ''}">
-      <input type="url" name="url" id="url" required placeholder="http:sample.com"/ value="${
-        item ? item.url : ''
-      }" required>
+      <input type="url" name="url" id="url" required placeholder="http:sample.com"/ value="${item ? item.url : ''
+    }" required>
       <div class="details flex-column">
-          <input type="text" class="title" placeholder="Insert bookmark name" name="title" value="${
-            item ? item.title : ''
-          }"  required>
+          <input type="text" class="title" placeholder="Insert bookmark name" name="title" value="${item ? item.title : ''
+    }"  required>
           <label for="rating">Rating</label>
           
           <select name="rating" id="rating">
           ${options}
           </select>
-          <textarea name="desc" id="description" cols="30" rows="10">${
-            item ? item.desc : ''
-          } </textarea>
+          <textarea name="desc" id="description" cols="30" rows="10"> ${item ? item.desc : ''
+    } </textarea>
       
       </div>
       <div class=" form-buttons flex-row">
@@ -90,9 +87,8 @@ function generateListItem(items) {
       stars = getStars(site.rating);
     }
 
-    listString += ` <li class='js-list-item list-item flex-column' tabindex="0" data-item-id="${
-      site.id
-    }">
+    listString += ` <li class='js-list-item list-item flex-column' tabindex="0" data-item-id="${site.id
+      }">
                     <div class="list-head flex-row">
                         <span class="item-title"> ${site.title}</span> 
                         
@@ -100,16 +96,13 @@ function generateListItem(items) {
                         <button type="button" name="delete-item" class='js-delete delete-button'>Delete</button>
                     </span>
                     </div>
-                    <div class="js-expand item-preview flex-column  ${
-                      site.expanded ? '' : 'hidden'
-                    }">
+                    <div class="js-expand item-preview flex-column  ${!site.expanded ? '' : 'hidden'
+      }">
                         <span class="flex-row top-description">
-                            <button class="buttons visit-button"><a href="${
-                              site.url
-                            }" alt="link-to bookmark" target= "black">Visit page</a></button>
-                            <span class= "star flex-column" > ${
-                              site.rating
-                            } Stars </span>
+                            <button class="buttons visit-button"><a href="${site.url
+      }" alt="link-to bookmark" target= "black">Visit page</a></button>
+                            <span class= "star flex-column" > ${site.rating
+      } Stars </span>
                         </span>
                         <p class="description">${site.desc}
                         </p>
@@ -123,9 +116,12 @@ function generateListItem(items) {
 
 
 function generateListTemplate(items) {
-  let template = `<div class="js-error-container error-container flex-row "> </div>
+  let template = `<header class="flex-row">
+  <h1>Bookmarks App</h1>  
+</header>
+  <div class="js-error-container error-container flex-row "> </div>
   <div class="buttons-container flex-row">
-        <button type="button" class="js-new buttons" id='new-bookmark'> + Add a bookmark:</button>
+        <button type="button" class="js-new buttons" id='new-bookmark'> + New bookmark</button>
         <select name="filter" id="filter" class='buttons'>
             <option value="" selected disabled >Filter By</option>
             <option value="0">No filter</option>
@@ -138,9 +134,11 @@ function generateListTemplate(items) {
     </div>
     <div class="result-list">
         <ul class="flex-column"> 
-      `
-  template += generateListItem(items)
-  return template
+      `;
+  template += generateListItem(items);
+  template += ' </ul> </div> ';
+
+  return template;
 }
 
 
@@ -155,10 +153,10 @@ function render() {
   } else if (newStore.adding) {
     template += generateAddForm()
   } else if (newStore.filter === 0) {
-    
+
     template += generateListTemplate(items)
   } else if (newStore.filter !== 0) {
-    
+
     items = filterByRating(items, newStore.filter)
     template += generateListTemplate(items)
   }
@@ -166,12 +164,12 @@ function render() {
   $('.container').html(template)
 }
 
-  function filterByRating(items, rating) {
+function filterByRating(items, rating) {
   let filteredItems = items.filter((item) => item.rating >= rating)
   return filteredItems
-  }
+}
 
-  function handleFormSubmit() {
+function handleFormSubmit() {
   $('.container').on('submit', '.js-form', function (evt) {
     evt.preventDefault()
     let id = $(this).data('item-id')
@@ -181,10 +179,9 @@ function render() {
   })
 }
 
-function handleNewBookmark (bookmark) {
+function handleNewBookmark(bookmark) {
   api.addBookmark(bookmark)
     .then((item) => {
-      console.log(item)
       store.addBookmark(item)
       store.toggleAdd()
       render()
@@ -203,7 +200,6 @@ function handleUpdateBookmark(id, bookmark) {
       render()
     })
     .catch((error) => {
-      console.log(error)
       store.displayError(error.message)
       renderError()
     })
@@ -229,13 +225,13 @@ function handleDeleteItem() {
 
 
 function handleCancelError() {
-  $('.container').on('click', '#cancel-err', function() {
+  $('.container').on('click', '#cancel-err', function () {
     store.displayError(null)
     render()
   })
 }
 
- function handleCancelClick() {
+function handleCancelClick() {
   $('.container').on('click', '#cancel', function (evt) {
     let id = $(this).closest('.js-form').data('item-id')
     if (id) store.changeBookmark('')
@@ -269,7 +265,7 @@ function handlekeyDownListItem() {
   })
 }
 
-function handleListItemClick () {
+function handleListItemClick() {
   $('.container').on('click', '.js-list-item', function (evt) {
     evt.stopPropagation()
     const id = $(this).data('item-id')
@@ -278,8 +274,8 @@ function handleListItemClick () {
   })
 }
 
-function handleEditClick () {
-  $('.container').on('click', '.js-edit', function(evt) {
+function handleEditClick() {
+  $('.container').on('click', '.js-edit', function (evt) {
     let id = $(this).closest('.js-list-item').data('item-id');
     store.changeBookmark(id)
     render()
