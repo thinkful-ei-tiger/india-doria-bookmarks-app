@@ -126,7 +126,6 @@ function generateListTemplate(items) {
         <button type="button" class="js-new buttons" id='new-bookmark'> + New bookmark</button>
         <select name="filter" id="filter" class='buttons'>
             <option value="" selected disabled >Filter By</option>
-            <option value="0">No filter</option>
             <option value="1">+1 Star</option>
             <option value="2">+2 Star</option>
             <option value="3">+3 Star</option>
